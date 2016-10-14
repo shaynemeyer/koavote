@@ -1,0 +1,23 @@
+{
+  "name": "koavote",
+  "version": "1.0.0",
+  "description": "A simple voting site using koa and mongodb",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --harmony app.js",
+    "test": "./node_modules/mocha/bin/mocha --harmony -u bdd -R spec"
+  },
+  "author": "Shayne Meyer",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^3.1.2",
+    "supertest": "^2.0.0"
+  },
+  "dependencies": {
+    "co-views": "^2.1.0",
+    "koa": "^1.2.4",
+    "koa-route": "^2.4.2",
+    "koa-static": "^2.0.0",
+    "swig": "^1.4.2"
+  }
+}
