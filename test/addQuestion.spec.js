@@ -15,7 +15,7 @@ describe("Adding question", function () {
 
   var a_question_form = {
     questionTitle: "A question?",
-    tagString: "tag1,tag2,tag3"
+    tagString: "tag1, tag2, tag3"
   };
 
   it("has nice page to add questions", function (done) {
