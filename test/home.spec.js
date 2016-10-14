@@ -40,6 +40,7 @@ describe("The homepage", function () {
 					res.text.should.containEql("Question Q2");
 				})
 				.end(done)
-		})
+		});
+		done();
 	});
 });
