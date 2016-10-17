@@ -16,7 +16,19 @@ module.exports.addQuestion = function *() {
 
   var q = yield db.questions.insert(questionToStore);
 
-  this.redirect("/question/", + q._id);
+ this.redirect("/question/" + q._id);
+};
+
+module.exports.showQuestion = function *(id) {
+  var q = yield db.questions.findById(id);
+
+  vm = {
+    id: q._id.toString(),
+    questionTitle: q.title,
+    tagString: q.tags.join(', ')
+  };
+
+  this.body = yield render("showQuestion", vm);
 };
 
 function splitAndTrimTagString(tagString) {
@@ -30,7 +42,7 @@ function splitAndTrimTagString(tagString) {
       tags.splice(i);
       i--;
     }
-  };
+  }
 
   return tags;
-}
+};
