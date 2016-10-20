@@ -20,7 +20,7 @@ module.exports.addQuestion = function *() {
 };
 
 module.exports.showQuestion = function *(id) {
-  var q = yield db.questions.findById(id);
+  var q = yield db.questions.findOne(id);
 
   vm = {
     id: q._id.toString(),
@@ -29,6 +29,19 @@ module.exports.showQuestion = function *(id) {
   };
 
   this.body = yield render("showQuestion", vm);
+};
+
+module.exports.updateQuestion = function *(id) {
+  var postedData = yield parse(this);
+
+  var questionToStore = {
+    title: postedData.questionTitle,
+    tags: splitAndTrimTagString(postedData.tagString)
+  };
+
+  yield db.questions.update(id, questionToStore);
+
+  this.redirect("/question/" + id);
 };
 
 function splitAndTrimTagString(tagString) {
