@@ -1,10 +1,10 @@
 var app = require('./../app');
 var request = require("supertest").agent(app.listen());
-var testHelpers = require('./testHelpers');
 
 var db = require("./../lib/db.js");
 var co = require("co");
 var should = require("should");
+var testHelpers = require('./testHelpers');
 
 describe("Updating questions", function () {
   beforeEach(function (done) {

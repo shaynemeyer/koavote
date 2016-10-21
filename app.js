@@ -16,5 +16,9 @@ app.use(route.post('/question', questionRoutes.addQuestion));
 app.use(route.get('/question/:id', questionRoutes.showQuestion));
 app.use(route.post('/question/:id', questionRoutes.updateQuestion));
 
+var voteRoutes = require("./routes/voteRoutes");
+app.use(route.get("/vote", voteRoutes.showAddVote));
+app.use(route.post("/vote", voteRoutes.addVote));
+
 app.listen(5000);
 console.log("The app is listening. Port 5000");

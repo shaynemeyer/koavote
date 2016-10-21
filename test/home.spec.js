@@ -41,6 +41,5 @@ describe("The homepage", function () {
 				})
 				.end(done)
 		});
-		done();
 	});
 });
