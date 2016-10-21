@@ -53,3 +53,19 @@ module.exports.addVote = function * () {
   var v = yield db.votes.insert(vote);
   this.redirect('/vote/' + v._id + '/comment');
 };
+
+module.exports.showAddComment = function *(id) {
+  var vote = yield db.votes.findOne(id);
+  this.body = yield render('comment', { voteId : id, questionId : vote.questionId.toString() });
+};
+
+module.exports.addComment = function *(id){
+  var postedData = yield parse(this);
+
+  var vote = yield db.votes.findAndModify(
+    { _id : id },
+    { $set: { comment : postedData.comment }}
+  );
+
+  this.redirect('/vote?questionId=' + vote.questionId);
+};
